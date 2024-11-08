@@ -19,10 +19,23 @@ class CounterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.counter_fragment, null)
+        var view = inflater.inflate(R.layout.counter_fragment, null)
         txtCounter = view.findViewById(R.id.txtCounter)
         btnIncrement = view.findViewById(R.id.btnIncrement)
         btnDecrement = view.findViewById(R.id.btnDecrement)
+
+        btnIncrement.setOnClickListener {
+            count++
+            txtCounter.text = "$count"
+        }
+
+        btnDecrement.setOnClickListener {
+            if (count > 0) {
+                count--
+            }
+            txtCounter.text = "$count"
+        }
+
         return view
     }
 }
